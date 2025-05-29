@@ -25,12 +25,15 @@ public class Shooter : MonoBehaviour
 
     private void Shoot()
     {
-        if (_bulletPrefab == null || _firePosition == null) return;
+        if (_bulletPrefab == null || _firePosition == null)
+        {
+            Debug.LogWarning("Bullet Prefab or Fire Position is not set.");
+        }
 
         //ƒJƒƒ‰‚ÌŒü‚«‚Å”­Ë•ûŒü‚ğŒˆ’è
         Quaternion rotation = Quaternion.LookRotation(transform.forward);
         //’e‚ğ¶¬
-        GameObject@bullet =Instantiate(_bulletPrefab, _firePosition.position, rotation);
+        GameObject bullet =Instantiate(_bulletPrefab, _firePosition.position, rotation);
     
         Collider playerCollider = GetComponent<Collider>();
         Collider bulletCollider = bullet.GetComponent<Collider>();
